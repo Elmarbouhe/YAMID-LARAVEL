@@ -95,7 +95,7 @@
                     <div class="card">
                         <h3 class="card-header">Choisissez votre quantité</h3>
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{route('add.cart',$product->slug)}}" method='POST'>
                                 @csrf
                                 <div class="form-group">
                                     <label for="quantity" class="label-input my-2">

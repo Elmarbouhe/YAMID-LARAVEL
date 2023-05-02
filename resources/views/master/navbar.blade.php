@@ -19,13 +19,13 @@
                 categories
             </a>
             <ul class="dropdown-menu">
-                @foreach ($categories as $category)
+                {{-- @foreach ($categories as $category)
                 <li class="nav-item">
-                {{-- <a href="{{route('category.posts', $category->slug)}}" class="nav-link text-dark" aria-current="page"> --}}
+                <a href="{{route('category.posts', $category->slug)}}" class="nav-link text-dark" aria-current="page">
                     {{$category->title}}
                 </a>
                 </li>
-                @endforeach
+                @endforeach --}}
             </ul>
           </li>
 
