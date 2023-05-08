@@ -60,7 +60,8 @@
         <div class="col-md-4">
             <div class="list-group my-2">
                 <li class="list-group-item active">
-                    categories
+                    <i class='fas fa-book-medical' style='font-size:24px;color:rgb(255, 255, 255)'></i>
+                     Para categories
                 </li>
                 @foreach ($categories as $category)
                 <a href="{{route('category.products', $category->slug)}}" class="list-group-item list-group-item-action">

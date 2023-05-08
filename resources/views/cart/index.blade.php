@@ -49,14 +49,12 @@
                         <td>{{ $item->price }}</td>
                         <td>{{ $item->price * $item->quantity }}</td>
                         <td>
-                            <form  class="d-flex flex-row justify-content-center align-items-center" action="{{route('remove.cart', $item->associatedModel->slug)}}" method="POST">
+                            <form   action="{{route('remove.cart', $item->associatedModel->slug)}}" method="POST">
                                 @csrf
                                 @method("DELETE")
-                                <div class="form-group my-2">
                                     <button type="submit" class="btn btn-sm btn-danger">
-                                        <i class="fas fa-trash"></i>
+                                        <i class="fas fa-trash"></i>  Supprimer
                                     </button>
-                                </div>
                             </form>
                         </td>
                     </tr>
@@ -67,6 +65,28 @@
                         <td></td>
                         <td>Total</td>
                         <td>{{ Cart::getTotal() }} DH</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="{{ route('home') }}" class="btn btn-sm btn-dark font-size-24">
+                                <i class="fas fa-shopping-cart"></i> Continuer vos achats
+                            </a>
+                        </td>
+                        <td>
+                            <form action="{{'pay'}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="amount" value="{{ Cart::getTotal() }}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i style='font-size:24px' class='fab'>&#xf1f4;</i>
+                                    Pay {{ Cart::getTotal() }} DH avic Paypal
+                                </button>
+
+                            </form>
+                        </td>
                         <td></td>
                     </tr>
                 </tbody>

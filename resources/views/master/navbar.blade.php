@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #ffffff !important;">
     <div class="container-fluid">
         <img src="{{ asset('/logo/logo.JPG')}}"
         width="95"
@@ -13,56 +13,28 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{url('/')}}">Accueil</a>
           </li>
-
-           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                categories
-            </a>
-            <ul class="dropdown-menu">
-                {{-- @foreach ($categories as $category)
-                <li class="nav-item">
-                <a href="{{route('category.posts', $category->slug)}}" class="nav-link text-dark" aria-current="page">
-                    {{$category->title}}
+        @if(Auth()->user())
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('dashboard') }}">Profil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('cart.index') }}">
+                    <i style='font-size:18px' class='fas'>&#xf217;</i>
+                    Panier
                 </a>
-                </li>
-                @endforeach --}}
-            </ul>
-          </li>
-
-
-          @if(auth()->check())
-          <li class="nav-item">
-              <a class="nav-link" href="{{route('profile.show')}}">
-                {{auth()->user()->name}}
-              </a>
-          </li>
-          @if(auth()->user()->role == 'admin')
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('posts.create')}}">Ajouter</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('categorys.create')}}">Ajouter une catégorie</a>
+            </li>
+        @else
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">Connexion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">Inscription</a>
             </li>
         @endif
-          @else
-          <li class="nav-item">
-              <a class="nav-link" href="{{route('register')}}">
-                 Inscription
-              </a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="{{route('login')}}">
-                 Connexion
-              </a>
-            </li>
-          @endif
+
 
 
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Recherche</button>
-        </form>
       </div>
     </div>
   </nav>
