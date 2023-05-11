@@ -3,14 +3,18 @@
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-2">
-
+        <div class="col-md-4 mt-5">
+        @include('master.sidebar')
         </div>
-        <div class="col-md-10">
-            <h3 class="text-center" style="background-color: #fff; border-radius: 10px; box-shadow: 0px 3px 10px 0px #000; padding: 10px;">
-                produits</h3>
+        <div class="col-md-8">
+            <h3 class="text-center">
+            <a href="{{route('products.create')}}"
+            class="btn btn-primary my-2">
+               <i class ="fa fa-plus"></i>
+            </a>
+            Liste des produits</h3>
 
-            <table class="table table-hover table-bordered" style="background-color: #fff; border-radius: 10px; box-shadow: 0px 0px 10px 0px #000; padding: 10px;">
+            <table class="table table-hover table-bordered" style="background-color: #dddddd;">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -21,9 +25,12 @@
                         <th>disponible</th>
                         <th>image</th>
                         <th>categorie</th>
+                        <th>SPRM </th>
+                        <th>MDF </th>
 
                     </tr>
                 </thead>
+                <hr>
                 <tbody>
                     @foreach ($products as $product)
                     <tr>
@@ -40,11 +47,34 @@
                             @endif
                         </td>
                         <td>
-                            <img src="{{ $product->image }}"
+                            <img src="{{ asset($product->image)}}"
                             alt="{{ $product->title }}" width="50" height="50"
                             class="img-fluid rounded-circle">
                         </td>
                         <td>{{ $product->category->title }}</td>
+                        <td>
+                            {{-- supprition d'un produit --}}
+                            <form id="{{ $product->id }}" method="POST" action="{{ route("products.destroy" , $product->slug) }}">
+                                @csrf
+                                @method("DELETE")
+                                <button
+                                onclick="event.preventDefault();
+                                   if(confirm('Do you really want to delete the product {{$product->title}} ?'))
+                                    document.getElementById({{ $product->id }}).submit();"
+                                    class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        <td>
+                            {{-- modification d'un produit --}}
+                            <form method="POST" action="{{ route('products.update' , $product->id) }}">
+                                @csrf
+                                @method("PUT")
+                                <button class="btn btn-sm btn-success">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                            </form>
+                        </td>
 
                     </tr>
                     @endforeach

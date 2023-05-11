@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             //
             "title" => $title = $this->faker->sentence(3),
             "slug" => Str::slug($title),
-            "description" => $this->faker->paragraph(3),
+            "description" => $this->faker->paragraph(1),
             "price" => $this->faker->numberBetween(100, 1000),
             "old_price" => $this->faker->numberBetween(100, 1000),
             "inStock" => $this->faker->numberBetween(0, 10),

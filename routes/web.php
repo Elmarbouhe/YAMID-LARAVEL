@@ -19,7 +19,7 @@ use App\Http\Controllers\ShopController;
 
 // login & register routes & verification routes
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified'])->group(function () {
-Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');});
+     Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');});
 
 // home page route
 Route::get('/', 'HomeController@index')->name('home');
@@ -27,6 +27,8 @@ Route::get('/', 'HomeController@index')->name('home');
 // product routes
 Route::resource('products', ProductController::class);
 Route::get('/category/{category}', 'HomeController@showByCategory')->name('category.products');
+Route::get('/product/{product}', 'HomeController@show')->name('product.show');
+
 
 // cart routes
 Route::get('/cart', 'CartController@index')->name('cart.index');
@@ -55,6 +57,13 @@ Route::get('/admin/orders', 'AdminController@getOrders')->name('admin.orders');
 
 //orders routes
 Route::resource('orders', OrderController::class);
+
+//category routes
+Route::resource('categories', CategoryController::class);
+
+
+
+
 
 
 

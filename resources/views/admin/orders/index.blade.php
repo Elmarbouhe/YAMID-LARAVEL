@@ -3,17 +3,15 @@
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-2">
-
+        <div class="col-md-4 mt-5">
+        @include('master.sidebar')
         </div>
-        <div class="col-md-10">
-            <h3 class="text-center" style="background-color: #fff; border-radius: 10px; box-shadow: 0px 0px 10px 0px #000; padding: 10px;">
-                Orders</h3>
-
-            <table class="table table-hover table-bordered" style="background-color: #fff; border-radius: 10px; box-shadow: 0px 0px 10px 0px #000; padding: 10px;">
+        <div class="col-md-8">
+            <h3 class="text-center">Liste des commandes</h3>
+            <table class="table table-hover table-bordered" style="background-color: dddddd; ">
                 <thead>
                     <tr>
-                        <th>Order ID</th>
+                        <th>ID</th>
                         <th>nom</th>
                         <th>produit</th>
                         <th>quantity</th>
@@ -24,6 +22,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                <hr>
                 <tbody>
                     @foreach ($orders as $order)
                     <tr>

@@ -9,7 +9,7 @@
                  <div class="card">
                     <h3 class="card-header">{{$product->title }} </h3>
                                     <div class="card-img-top">
-                                         <img src="{{$product->image}}" class="img-fluid w-100" alt="...">
+                                         <img src="{{asset($product->image)}}" class="img-fluid w-100" alt="...">
                                     </div>
                                     <div class="card-body">
                                          <h5 class="card-title">{{ $product->title }}</h5>

@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin')->except(['showAdminLoginForm','admineLogin']);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
+
     }
 
     /**
@@ -22,14 +29,24 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view("admin.categories.create")->with([
+            "categorys"=> Category::all()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(Request $request)
     {
         //
+        Category::create([
+            "title" => $request->title,
+            "slug" => Str::slug($request->title),
+        ]);
+        return redirect()->route('admin.index')->with([
+            'success' => 'Category created successfully'
+        ]);
     }
 
     /**

@@ -12,11 +12,10 @@
                 <a class="nav-link" href="/admin">Tableau de bord</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Ajouter une catégorie</a>
+                <a class="nav-link" href="{{ route('categories.create')}}">Ajouter une catégorie</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Ajouter un produit</a>
-            </li>
+                <a class="nav-link" href="{{ route('products.create')}}">Ajouter un produit</a>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.logout') }}">Déconnexion</a>
             </li>

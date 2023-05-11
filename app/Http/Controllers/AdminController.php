@@ -9,10 +9,10 @@ use App\Models\Order;
 class AdminController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth:admin')->except(['showAdminLoginFrom','admineLogin']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth:admin')->except(['showAdminLoginForm','admineLogin']);
+    }
 
     public function index()
     {
@@ -53,7 +53,7 @@ class AdminController extends Controller
     public function getOrders()
     {
         return view('admin.orders.index')->with([
-            "orders" => Order::latest()->paginate(5),
+            "orders" => Order::latest()->paginate(8),
         ]);
     }
 
