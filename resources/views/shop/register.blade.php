@@ -1,4 +1,12 @@
+@extends('master.adminLayout')
+@section('contentNav')
+
 <body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Register Shop</h1>
+            </div>
     <form action="{{ route('shop.register.submit') }}" method="POST">
       @csrf
       <div>
@@ -50,7 +58,9 @@
   }
 
     </script>
-  </body>
+    </div>
+</div>
+  </body>s
   <style>
     form {
       display: flex;
@@ -79,3 +89,6 @@
     width: 100%;
   }
   </style>
+
+@endsection
+

@@ -17,6 +17,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('products.create')}}">Ajouter un produit</a>
             <li class="nav-item">
+            <li class="nav-item">
+                <a class ="nav-link" href="{{ route('shop.register')}}"> Ajouter une  pharmacie</a>
+            </li>
                 <a class="nav-link" href="{{ route('admin.logout') }}">Déconnexion</a>
             </li>
         @else
